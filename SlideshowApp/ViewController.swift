@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var pageLabel: UILabel!
     @IBOutlet weak var imageAsButton: UIButton!
+    @IBOutlet weak var playStopButton: UIButton!
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,9 @@ class ViewController: UIViewController {
             // segueから遷移先のResultViewControllerを取得する
         let expandViewController: ExpandViewController = segue.destination as! ExpandViewController
         expandViewController.nameOfImageToShow =  self.appController.imageNames[self.appController.currentPageIndex]
+        
+        //stop auto slideshow
+        appController.stopTimerForExpand()
     }
    
     @IBAction func previousButton(_ sender: Any) {

@@ -16,6 +16,8 @@ class AppController : UIViewController{
     var timer: Timer!
     var timerOn: Bool = false;
     
+    var savedColor: UIColor = UIColor.label;
+    
     //the image showing will change according to this value(=index value)
     var currentPageIndex:Int = 0;
     let imageNames = ["pexels-francesco-ungaro-2835436",
@@ -26,14 +28,26 @@ class AppController : UIViewController{
     func initialize(){
         self.currentPageIndex = 0;
         self.mainViewController?.updatePageLabel(currentPage: currentPageIndex+1, totalPage: imageNames.count)
+        self.mainViewController?.playStopButton.setTitle("再生" , for: .normal)
+        self.savedColor = mainViewController?.nextButton.currentTitleColor ?? UIColor.label
     }
     
     @objc func processPlayStop(){
         if self.timerOn {
             stopTimer()
+            self.mainViewController?.playStopButton.setTitle("再生" , for: .normal)
+            self.mainViewController?.previousButton.isUserInteractionEnabled = true
+            self.mainViewController?.previousButton.setTitleColor(UIColor.systemBlue, for: .normal)
+            self.mainViewController?.nextButton.isUserInteractionEnabled = true
+            self.mainViewController?.nextButton.setTitleColor(UIColor.systemBlue, for: .normal)
         }
         else{
             startTimer()
+            self.mainViewController?.playStopButton.setTitle("停止" , for: .normal)
+            self.mainViewController?.previousButton.isUserInteractionEnabled = false
+            self.mainViewController?.previousButton.setTitleColor(UIColor.darkGray, for: .normal)
+            self.mainViewController?.nextButton.isUserInteractionEnabled = false
+            self.mainViewController?.nextButton.setTitleColor(UIColor.darkGray, for: .normal)
         }
     }
     @objc func startTimer(){
@@ -48,6 +62,12 @@ class AppController : UIViewController{
         self.timer = nil;
     }
     
+    @objc func stopTimerForExpand(){
+        if timerOn {
+            processPlayStop()
+        }
+    }
+    
     @objc func processPrevious(){
         print("previous")
         self.currentPageIndex -= 1;
@@ -56,7 +76,6 @@ class AppController : UIViewController{
         }
         mainViewController!.reloadImage()
         mainViewController!.updatePageLabel(currentPage: self.currentPageIndex+1, totalPage: imageNames.count)
-        
     }
     
     @objc func processNext(){

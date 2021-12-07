@@ -53,20 +53,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="Imb-n0-LxN"/>
                                 </constraints>
-                                <state key="normal" title="再生/停止"/>
+                                <state key="normal" title="再生/停止">
+                                    <color key="titleColor" systemColor="systemBlueColor"/>
+                                </state>
                                 <connections>
                                     <action selector="playStopButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="es6-zr-tez"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJk-3c-O3v" userLabel="NextButton">
-                                <rect key="frame" x="289" y="528.66666666666663" width="80" height="30"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="lEf-n7-j0G"/>
-                                </constraints>
-                                <state key="normal" title="進む"/>
-                                <connections>
-                                    <action selector="nextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vv3-jM-nXV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スライドショーアプリ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibD-dX-KHt">
@@ -78,6 +69,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJk-3c-O3v" userLabel="NextButton">
+                                <rect key="frame" x="289" y="528.66666666666663" width="80" height="30"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="lEf-n7-j0G"/>
+                                </constraints>
+                                <state key="normal" title="進む"/>
+                                <connections>
+                                    <action selector="nextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vv3-jM-nXV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -99,7 +101,10 @@
                     </view>
                     <connections>
                         <outlet property="imageAsButton" destination="RLW-Hy-mJN" id="g70-O3-Uu2"/>
+                        <outlet property="nextButton" destination="mJk-3c-O3v" id="UMv-wL-0S0"/>
                         <outlet property="pageLabel" destination="EU2-zo-KiT" id="F2i-Pd-6Yc"/>
+                        <outlet property="playStopButton" destination="2ro-c6-IDC" id="4bz-6H-gNy"/>
+                        <outlet property="previousButton" destination="ToN-3x-9O7" id="nJL-pJ-DEW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -126,7 +131,7 @@
                                     <segue destination="wVT-wG-6OS" kind="unwind" unwindAction="unwindFor:" id="QnN-eI-um2"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7g-hH-OE8" userLabel="ExpandImage">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7g-hH-OE8" userLabel="ExpandImage">
                                 <rect key="frame" x="0.0" y="247" width="414" height="222"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="a7g-hH-OE8" secondAttribute="height" multiplier="69:37" id="2dR-n5-VCU"/>
@@ -159,6 +164,9 @@
         <image name="pexels-francesco-ungaro-2835436" width="5446" height="3602"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
